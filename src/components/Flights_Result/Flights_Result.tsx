@@ -46,30 +46,41 @@ function Flights_Result() {
 
   return (
     <div className="flight_result">
-      <CommonHeader back={back}>
-        <div className="selected-route">
-          {isFlightResult && !isSort && !isFilter ? (
-            <>
-              <div className="route">
-                <div>{data.from}</div>
-                <div>
-                  <FaArrowRightLong className="icon" />
+      {window.innerWidth > 992 && !isSort && !isFilter && (
+        <>
+          <Sorting sentValue={getValue} selectedSortBy={sortBy} />
+          <Filters sentValue={getValue} />
+        </>
+      )}
+
+      {window.innerWidth <= 992 && (
+        <CommonHeader back={back}>
+          <div className="selected-route">
+            {isFlightResult && !isSort && !isFilter ? (
+              <>
+                <div className="route">
+                  <div>{data.from}</div>
+                  <div>
+                    <FaArrowRightLong className="icon" />
+                  </div>
+                  <div>{data.to}</div>
                 </div>
-                <div>{data.to}</div>
-              </div>
-              <div className="selected-date">
-                <div>
-                  {getDateFormat(data.depDate)}
-                  {data.returnDate && <> - {getDateFormat(data.returnDate)}</>}
+                <div className="selected-date">
+                  <div>
+                    {getDateFormat(data.depDate)}
+                    {data.returnDate && (
+                      <> - {getDateFormat(data.returnDate)}</>
+                    )}
+                  </div>
+                  <div>| {data.noOfTraveller} passenger</div>
                 </div>
-                <div>| {data.noOfTraveller} adult</div>
-              </div>
-            </>
-          ) : (
-            <div className="route">{isSort ? "Sort By" : "FIlter By"}</div>
-          )}
-        </div>
-      </CommonHeader>
+              </>
+            ) : (
+              <div className="route">{isSort ? "Sort By" : "FIlter By"}</div>
+            )}
+          </div>
+        </CommonHeader>
+      )}
       {isFlightResult && !isSort && !isFilter && (
         <>
           {routeResult?.map((item: Flight) => {
@@ -119,10 +130,12 @@ function Flights_Result() {
               </div>
             );
           })}
-          <div className="search-options">
-            <div onClick={() => setIsFilter(true)}>Filter</div>
-            <div onClick={() => setIsSort(true)}>Sort</div>
-          </div>
+          {window.innerWidth <= 992 && (
+            <div className="search-options">
+              <div onClick={() => setIsFilter(true)}>Filter</div>
+              <div onClick={() => setIsSort(true)}>Sort</div>
+            </div>
+          )}
         </>
       )}
       {isSort && <Sorting sentValue={getValue} selectedSortBy={sortBy} />}

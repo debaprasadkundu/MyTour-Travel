@@ -7,6 +7,13 @@
   gap: 30px;
   height: 100vh;
 
+  @media screen and (min-width: 992px) {
+    flex-direction: row;
+    gap: 10px;
+    height: auto;
+    padding: 15px;
+  }
+
   label {
     background-color: transparent;
     font-size: 20px;
@@ -15,6 +22,9 @@
     pointer-events: visible;
     margin: 10px 5px;
     padding: 0;
+    @media screen and (min-width: 992px) {
+      font-size: 14px;
+    }
   }
 
   input {

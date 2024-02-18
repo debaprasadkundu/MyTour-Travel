@@ -6,4 +6,11 @@
   flex-direction: column;
   gap: 30px;
   height: 100vh;
+
+  @media screen and (min-width: 992px) {
+    flex-direction: row;
+    gap: 10px;
+    height: auto;
+    padding: 15px;
+  }
 }

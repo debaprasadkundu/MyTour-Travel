@@ -5,11 +5,12 @@ import { MdFlight } from "react-icons/md";
 import { RiHotelFill } from "react-icons/ri";
 import { IoCarSharp } from "react-icons/io5";
 import { CiFlag1 } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { tabs } from "../../utilities/tabs";
 
 function Navbar() {
   const [active, setActive] = useState("menu-bar");
+  const { pathname } = useLocation();
 
   const openNav = () => {
     active === "menu-bar"
@@ -45,16 +46,26 @@ function Navbar() {
 
         <div className="logo-div">
           <a href="#" className="logo flex">
-            <h2>cxLoyalty</h2>
+            cxLoyalty
           </a>
         </div>
 
-        <div className="nav-bar">
+        <nav className="nav-bar">
           <ul className="nav-list flex">
             {tabs.map((item) => {
               return (
-                <li className="nav-item" key={item.name}>
-                  <Link to={item.to} className="nav-link">
+                <li
+                  className={
+                    item.to === pathname ? "nav-item active" : "nav-item"
+                  }
+                  key={item.name}
+                >
+                  <Link
+                    to={item.to}
+                    className={
+                      item.to === pathname ? "nav-link active" : "nav-link"
+                    }
+                  >
                     {renderSwitch(item.icon)}
                     {item.name}
                   </Link>
@@ -62,7 +73,7 @@ function Navbar() {
               );
             })}
           </ul>
-        </div>
+        </nav>
 
         <div className={active}></div>
       </header>

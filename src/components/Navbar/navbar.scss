@@ -14,6 +14,7 @@
   .logo {
     color: $white_color;
     cursor: pointer;
+    font-size: 24px;
 
     .icon {
       font-size: 25px;
@@ -27,68 +28,73 @@
     margin: auto;
   }
 
-  @media screen and (max-width: 768px) {
-    .nav-bar {
-      position: absolute;
-      display: flex;
-      background: $white_color_dream;
-      width: 100vw;
-      top: 4rem;
-      left: 50%;
-      transform: translate(-50%);
-      z-index: 2000;
-    }
+  .nav-bar {
+    position: absolute;
+    display: flex;
+    background: $white_color_dream;
+    width: 100vw;
+    top: 4rem;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 2000;
+  }
 
-    .menu-bar {
-      position: absolute;
-      background: $white_color_dream;
-      height: max-content;
-      width: 80%;
-      border-radius: 1rem;
-      top: -500rem;
-      left: 50%;
+  .nav-list {
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+
+    .nav-item {
       padding: 1rem;
-      transform: translate(-50%);
-      z-index: 2000;
-      box-shadow: 0 2px 4px rgba(2, 15, 29, 0.904);
-      transition: 0.3s ease-in-out;
-    }
+      margin: 0.1rem;
+      border-bottom: 4px solid $grey_text;
 
-    .active-menu-bar {
-      top: 7rem;
-    }
+      &.active {
+        color: $primary_color;
+        border-bottom: 4px solid $primary_color;
+      }
 
-    .nav-list {
-      justify-content: flex-start;
-      width: 100%;
-      margin: auto;
+      .nav-link {
+        color: $text_color;
+        font-size: 1rem;
+        font-weight: 600;
 
-      .nav-item {
-        padding: 1rem;
-        margin: 0.1rem;
-        border-bottom: 4px solid $grey_text;
-
-        .nav-link {
-          color: $text_color;
-          font-size: 1rem;
-          font-weight: 600;
-
-          .icon {
-            font-size: 16px;
-            top: 5px;
-          }
-
-          &:hover {
-            color: $primary_color;
-          }
+        .icon {
+          font-size: 16px;
+          top: 5px;
         }
+
+        &.active {
+          color: $primary_color;
+        }
+
         &:hover {
-          border-bottom: 4px solid $primary_color;
+          color: $primary_color;
         }
+      }
+      &:hover {
+        border-bottom: 4px solid $primary_color;
       }
     }
   }
 
+  .menu-bar {
+    position: absolute;
+    background: $white_color_dream;
+    height: max-content;
+    width: 80%;
+    border-radius: 1rem;
+    top: -500rem;
+    left: 50%;
+    padding: 1rem;
+    transform: translate(-50%);
+    z-index: 2000;
+    box-shadow: 0 2px 4px rgba(2, 15, 29, 0.904);
+    transition: 0.3s ease-in-out;
+  }
+  .active-menu-bar {
+    top: 7rem;
+  }
   .toggle-nav-bar {
     .icon {
       font-size: 25px;
@@ -97,6 +103,9 @@
 
     &:hover.icon {
       color: $secondary_color;
+    }
+    @media screen and (min-width: 768px) {
+      display: none;
     }
   }
 }
