@@ -72,12 +72,12 @@ function Flights() {
           <div className="p-relative">
             <input
               type="date"
-              id="departure date"
+              id="depDate"
               min={formatDate(new Date())}
               value={searchCriteria.depDate?.toString()}
               onChange={handleChange}
             />
-            <label htmlFor="departure date">Depart Date</label>
+            <label htmlFor="depDate">Depart Date</label>
           </div>
         </div>
 
@@ -85,13 +85,13 @@ function Flights() {
           <div className="p-relative">
             <input
               type="date"
-              id="return date"
+              id="returnDate"
               min={formatDate(searchCriteria.depDate)}
               value={searchCriteria.returnDate?.toString()}
               onChange={handleChange}
               disabled={!searchCriteria.depDate}
             />
-            <label htmlFor="return date">Return Date</label>
+            <label htmlFor="returnDate">Return Date</label>
           </div>
         </div>
 
@@ -99,12 +99,12 @@ function Flights() {
           <div className="p-relative">
             <input
               type="number"
-              id="travelers"
+              id="noOfTraveller"
               value={searchCriteria.noOfTraveller}
               onChange={handleChange}
               min="1"
             />
-            <label htmlFor="travelers">Travelers</label>
+            <label htmlFor="noOfTraveller">Travelers</label>
           </div>
         </div>
 
