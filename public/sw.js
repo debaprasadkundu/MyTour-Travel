@@ -19,7 +19,6 @@ this.addEventListener("install", (event) => {
         "https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/UK.png?v=18",
         "https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/SG.png?v=18",
         "https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/I5.png?v=18",
-        "/static/js/vendors-node_modules_react-icons_ci_index_mjs-node_modules_react-icons_fa6_index_mjs-node_mod-63ca8c.chunk.js",
       ]);
     })
   );
