@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import result from "../../mock/city.json";
+import "./autocomplete.scss";
 
 const SuggestionsList = (props: any) => {
   const {
@@ -58,7 +59,7 @@ const Autocomplete = (props: any) => {
     }
 
     const filteredSuggestions = suggestions
-      .filter((item) => item.city_code != selectedCity)
+      .filter((item) => item.city_code !== selectedCity)
       ?.filter(
         (suggestion) =>
           suggestion.city_name.toLowerCase().includes(value.toLowerCase()) ||

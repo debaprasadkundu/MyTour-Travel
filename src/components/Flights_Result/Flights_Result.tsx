@@ -19,7 +19,13 @@ function Flights_Result() {
   const [filterBy, setFilterBy] = useState("");
 
   useEffect(() => {
-    setRouteResult(result?.route);
+    const localData = localStorage.getItem("flight_data");
+    if (!localData) {
+      setRouteResult(result?.route);
+      localStorage.setItem("flight_data", JSON.stringify(result?.route));
+    } else {
+      setRouteResult(JSON.parse(localData));
+    }
   }, []);
 
   const back = () => {

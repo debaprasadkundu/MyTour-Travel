@@ -11,7 +11,7 @@ const Filters = ({ sentValue }: Props) => {
     window.scrollTo(0, 0);
   }, []);
 
-  return <div className="filter-container"></div>;
+  return <div className="filter-container">Filter </div>;
 };
 
 export default Filters;
