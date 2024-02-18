@@ -1,0 +1,171 @@
+@import "../../variables.scss";
+
+.flight_result {
+  height: 100vh;
+
+  .selected-route {
+    // display: flex;
+    position: relative;
+    margin: auto;
+    color: $white_color;
+    font-size: 24px;
+    font-weight: bold;
+    .icon {
+      //   font-size: 40px;
+      margin: 0 20px;
+    }
+    .route {
+      display: flex;
+    }
+  }
+
+  .selected-date {
+    display: flex;
+    font-size: 16px;
+    div:first-child {
+      margin-right: 10px;
+    }
+  }
+
+  .back-icon {
+    .icon {
+      font-size: 40px;
+      color: $white_color;
+    }
+
+    &:hover.icon {
+      color: $secondary_color;
+    }
+  }
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .route {
+    position: relative;
+    .line {
+      border-top: 3px solid $primary_color;
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 2px;
+      bottom: 0;
+      z-index: 1;
+    }
+    .stop {
+      width: 8px;
+      height: 8px;
+      border: 2px solid $primary_color;
+      display: inline-block;
+      background-color: $primary_color;
+      position: relative;
+      z-index: 2;
+      //   left: 50px;
+      //   top: 9px;
+      border-radius: 20px;
+    }
+  }
+
+  .price-card-container {
+    display: flex;
+    gap: 2vw;
+    .price-card {
+      background-color: $primary_color;
+      width: 30vw;
+      height: 10vh;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      color: $white_color;
+      font-size: 12px;
+      &:hover {
+        background-color: $dark_blue;
+        cursor: pointer;
+      }
+    }
+    .price {
+      font-weight: bold;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 10px;
+    //background-color: #2196F3;
+    padding: 20px;
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 15px;
+      position: relative;
+      top: 10px;
+    }
+    // justify-content: center;
+
+    //   grid-auto-rows: minmax(100px, auto);
+  }
+
+  .item1 {
+    grid-column: 1/4;
+  }
+
+  .item2 {
+    grid-column: 1;
+    // grid-column-start: 1;
+    // grid-row: 2 / 5;
+  }
+}
+
+.deperture,
+.destination,
+.route {
+  text-align: center;
+}
+
+.search-options {
+  position: fixed;
+  display: flex;
+  background: $white_color_dream;
+  width: 60vw;
+  bottom: 1rem;
+  //column-gap: 0.8rem;
+  //   padding: 5px 1rem;
+  border-radius: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 9999999;
+
+  div {
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+    color: $primary_color;
+    font-weight: bold;
+    width: 50%;
+    border-radius: 5px;
+    &:hover {
+      background: $primary_color;
+      color: $white_color;
+    }
+  }
+  div:first-child {
+    border-right: 1px solid $grey_text;
+  }
+}

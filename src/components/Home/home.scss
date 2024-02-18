@@ -1,0 +1,12 @@
+.outlet-body {
+  position: relative;
+  top: 1vh;
+
+  @media screen and (max-width: 768px) {
+    position: relative;
+    top: 7vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}

@@ -1,0 +1,114 @@
+@import "../../variables.scss";
+
+.header {
+  // position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $dark_blue;
+  margin: 0 auto;
+  width: 100%;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(2, 15, 29, 0.904);
+
+  .logo {
+    color: $white_color;
+    // font-weight: 600;
+    cursor: pointer;
+    // align-items: center;
+    // justify-content: center;
+
+    .icon {
+      font-size: 25px;
+      color: $primary_color;
+      transform: translate(5px);
+    }
+  }
+
+  .logo-div {
+    position: relative;
+    margin: auto;
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav-bar {
+      position: absolute;
+      display: flex;
+      background: $white_color_dream;
+      // height: max-content;
+      width: 100vw;
+      // border-radius: 1rem;
+      top: 4rem;
+      left: 50%;
+      // padding: 1rem .5rem;
+      transform: translate(-50%);
+      z-index: 2000;
+      // box-shadow: 0 2px 4px rgba(2,15,29,0.904);
+    }
+
+    .menu-bar {
+      position: absolute;
+      background: $white_color_dream;
+      height: max-content;
+      width: 80%;
+      border-radius: 1rem;
+      top: -500rem;
+      left: 50%;
+      padding: 1rem;
+      transform: translate(-50%);
+      z-index: 2000;
+      box-shadow: 0 2px 4px rgba(2, 15, 29, 0.904);
+      transition: 0.3s ease-in-out;
+    }
+
+    .active-menu-bar {
+      top: 7rem;
+    }
+
+    .nav-list {
+      // flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      margin: auto;
+      //padding: .5rem 0;
+
+      .nav-item {
+        padding: 1rem;
+        margin: 0.1rem;
+        border-bottom: 4px solid $grey_text;
+
+        .nav-link {
+          color: $text_color;
+          font-size: 1rem;
+          font-weight: 600;
+
+          .icon {
+            font-size: 16px;
+            top: 5px;
+            // color: $primary_color;
+            // transform: translate(5px);
+          }
+
+          &:hover {
+            color: $primary_color;
+          }
+        }
+        &:hover {
+          border-bottom: 4px solid $primary_color;
+        }
+      }
+    }
+  }
+
+  .toggle-nav-bar {
+    .icon {
+      font-size: 25px;
+      color: $white_color;
+    }
+
+    &:hover.icon {
+      color: $secondary_color;
+    }
+  }
+}
