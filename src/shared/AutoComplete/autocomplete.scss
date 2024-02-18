@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .suggestions-list {
   list-style: none;
   position: fixed;
@@ -7,17 +9,20 @@
   overflow-y: auto;
   max-width: 250px;
   z-index: 999999;
+  border-radius: 5px;
 }
+
 .suggestion {
-  background-color: rgb(226, 181, 181);
+  background-color: $white_color_dream;
   padding: 10px;
-  color: rgb(65, 65, 65);
+  color: $black_color;
   cursor: pointer;
 }
 .suggestion:hover {
-  background-color: rgba(238, 238, 238, 0.1);
+  background-color: $dark_blue;
+  color: $white_color;
 }
 .selected {
-  background-color: rgb(148, 44, 44);
-  color: rgb(238, 223, 223);
+  background-color: $dark_blue;
+  color: $white_color;
 }

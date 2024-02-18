@@ -1,10 +1,6 @@
 import { useState } from "react";
 import "./navbar.scss";
-import { IoIosMenu } from "react-icons/io";
-import { MdFlight } from "react-icons/md";
-import { RiHotelFill } from "react-icons/ri";
-import { IoCarSharp } from "react-icons/io5";
-import { CiFlag1 } from "react-icons/ci";
+import { plane, car, flag, menu, hotel } from "../../assets";
 import { Link, useLocation } from "react-router-dom";
 import { tabs } from "../../utilities/tabs";
 
@@ -21,16 +17,16 @@ function Navbar() {
   const renderSwitch = (param: string) => {
     switch (param) {
       case "MdFlight":
-        return <MdFlight className="icon" />;
+        return <img src={plane} alt="plane Logo" />;
 
       case "RiHotelFill":
-        return <RiHotelFill className="icon" />;
+        return <img src={hotel} alt="hotel Logo" />;
 
       case "IoCarSharp":
-        return <IoCarSharp className="icon" />;
+        return <img src={car} alt="car Logo" />;
 
       case "CiFlag1":
-        return <CiFlag1 className="icon" />;
+        return <img src={flag} alt="activity Logo" />;
 
       default:
         return;
@@ -41,7 +37,7 @@ function Navbar() {
     <section className="navbar-section">
       <header className="header flex">
         <div onClick={openNav} className="toggle-nav-bar">
-          <IoIosMenu className="icon" />
+          <img src={menu} alt="Menu" className="menu-icon" />
         </div>
 
         <div className="logo-div">

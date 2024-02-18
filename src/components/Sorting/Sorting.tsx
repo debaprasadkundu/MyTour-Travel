@@ -15,7 +15,7 @@ const Sorting = ({ selectedSortBy, sentValue }: Props) => {
     setSortArr(sort_res.sort);
     window.scrollTo(0, 0);
     setSortBy(selectedSortBy);
-  }, []);
+  }, [selectedSortBy]);
 
   const onSelect = (e: any) => {
     setSortBy(e.target.value);

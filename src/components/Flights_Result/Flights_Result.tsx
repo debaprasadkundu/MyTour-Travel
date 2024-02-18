@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./flights_result.scss";
-import { FaArrowRightLong } from "react-icons/fa6";
 import { useRootContext } from "../../context/context";
 import result from "../../mock/flight_result.json";
 import { Flight } from "../../models/flight";
@@ -9,6 +8,7 @@ import Sorting from "../Sorting/Sorting";
 import Filters from "../Filters/Filters";
 import CommonHeader from "../../shared/CommonHeader/CommonHeader";
 import { sort } from "../../utilities/sort_utility";
+import { arrow } from "../../assets";
 
 function Flights_Result() {
   const { data, isFlightResult, setIsFlightResult } = useRootContext();
@@ -61,7 +61,7 @@ function Flights_Result() {
                 <div className="route">
                   <div>{data.from}</div>
                   <div>
-                    <FaArrowRightLong className="icon" />
+                    <img src={arrow} alt="Arrow Logo" />
                   </div>
                   <div>{data.to}</div>
                 </div>

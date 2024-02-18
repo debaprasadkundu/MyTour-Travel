@@ -84,7 +84,7 @@ const Autocomplete = (props: any) => {
       <input
         type="text"
         placeholder={placeholder}
-        id={id}
+        id={label}
         onChange={onChange}
         value={inputValue}
       />

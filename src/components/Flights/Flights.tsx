@@ -12,7 +12,7 @@ function Flights() {
 
   useEffect(() => {
     setSearchCriteria(data);
-  }, []);
+  }, [data]);
 
   const search = () => {
     if (
@@ -72,7 +72,7 @@ function Flights() {
           <div className="p-relative">
             <input
               type="date"
-              id="depDate"
+              id="departure date"
               min={formatDate(new Date())}
               value={searchCriteria.depDate?.toString()}
               onChange={handleChange}
@@ -85,7 +85,7 @@ function Flights() {
           <div className="p-relative">
             <input
               type="date"
-              id="returnDate"
+              id="return date"
               min={formatDate(searchCriteria.depDate)}
               value={searchCriteria.returnDate?.toString()}
               onChange={handleChange}
@@ -99,7 +99,7 @@ function Flights() {
           <div className="p-relative">
             <input
               type="number"
-              id="noOfTraveller"
+              id="travelers"
               value={searchCriteria.noOfTraveller}
               onChange={handleChange}
               min="1"
@@ -120,7 +120,7 @@ function Flights() {
             <option value="main">Main</option>
             <option value="economy">Economy</option>
           </select>
-          <label htmlFor="Class" className="select-label">
+          <label htmlFor="class" className="select-label">
             Class
           </label>
         </div>

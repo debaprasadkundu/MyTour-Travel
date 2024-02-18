@@ -3,6 +3,11 @@
 .flight_result {
   height: 100vh;
 
+  img {
+    height: 20px;
+    width: 40px;
+  }
+
   .selected-route {
     position: relative;
     margin: auto;

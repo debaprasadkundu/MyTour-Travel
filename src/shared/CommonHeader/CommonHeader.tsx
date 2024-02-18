@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import "./commonHeader.scss";
-import { IoMdArrowBack } from "react-icons/io";
+import { arrowBack } from "../../assets";
 
 interface Props {
   children: ReactNode;
@@ -12,7 +12,7 @@ function CommonHeader(props: Props) {
   return (
     <header className="header flex">
       <div className="back-icon" onClick={back}>
-        <IoMdArrowBack className="icon" />
+        <img src={arrowBack} alt="arrow back Logo" />
       </div>
 
       {children}

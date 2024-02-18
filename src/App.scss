@@ -81,7 +81,7 @@ label {
   top: 50%;
   transform: translateY(-50%);
   background-color: white;
-  color: gray;
+  color: $black_color;
   padding: 0 0.3rem;
   margin: 0 0.5rem;
   transition: 0.1s ease-out;
@@ -92,20 +92,20 @@ label {
 input {
   font-size: 1rem;
   outline: none;
-  border: 1px solid gray;
+  border: 1px solid $gray;
   border-radius: 5px;
   padding: 1rem 0.7rem;
-  color: gray;
+  color: $black_color;
   transition: 0.1s ease-out;
   width: 100%;
 }
 
 input:focus {
-  border-color: #6200ee;
+  border-color: $primary_color;
 }
 
 input:focus + label {
-  color: #6200ee;
+  color: $primary_color;
   top: 0;
   transform: translateY(-50%) scale(0.9);
 }
@@ -116,7 +116,7 @@ input:not(:placeholder-shown) + label {
 }
 
 .select {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  // font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   position: relative;
   width: 100%;
   height: 100%;
@@ -129,22 +129,22 @@ input:not(:placeholder-shown) + label {
   width: 100%;
   height: 100%;
   padding: 10px 10px 10px 10px;
-  font-size: 18px;
+  font-size: 1rem;
   border-radius: 4px;
-  border: 2px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid $gray;
 }
 
 /* Remove focus */
 .select-text:focus {
   outline: none;
-  border: 2px solid orange;
+  border: 2px solid $primary_color;
 }
 
 /* Use custom arrow */
 .select .select-text {
   appearance: none;
   -webkit-appearance: none;
-  color: gray;
+  color: $black_color;
 }
 
 .select:after {
@@ -164,9 +164,9 @@ input:not(:placeholder-shown) + label {
 
 /* LABEL ======================================= */
 .select-label {
-  color: rgba(0, 0, 0, 0.26);
+  color: $black_color;
   background: white;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: normal;
   position: absolute;
   pointer-events: none;
@@ -183,11 +183,11 @@ input:not(:placeholder-shown) + label {
   color: $primary_color;
   top: -8px;
   transition: 0.2s ease all;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .select-text:valid:not(focus) ~ .select-label {
-  color: rgba(0, 0, 0, 0.26);
+  color: $black_color;
   // background: red;
 }
 .select-text:valid:focus ~ .select-label {
@@ -196,12 +196,4 @@ input:not(:placeholder-shown) + label {
 
 .warning {
   color: $red_color;
-}
-
-.hidden {
-  display: none;
-}
-
-.showen {
-  display: block;
 }
