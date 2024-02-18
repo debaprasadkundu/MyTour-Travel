@@ -4,14 +4,12 @@
   height: 100vh;
 
   .selected-route {
-    // display: flex;
     position: relative;
     margin: auto;
     color: $white_color;
     font-size: 24px;
     font-weight: bold;
     .icon {
-      //   font-size: 40px;
       margin: 0 20px;
     }
     .route {
@@ -70,8 +68,6 @@
       background-color: $primary_color;
       position: relative;
       z-index: 2;
-      //   left: 50px;
-      //   top: 9px;
       border-radius: 20px;
     }
   }
@@ -104,7 +100,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px 10px;
-    //background-color: #2196F3;
     padding: 20px;
 
     img {
@@ -114,9 +109,6 @@
       position: relative;
       top: 10px;
     }
-    // justify-content: center;
-
-    //   grid-auto-rows: minmax(100px, auto);
   }
 
   .item1 {
@@ -125,8 +117,6 @@
 
   .item2 {
     grid-column: 1;
-    // grid-column-start: 1;
-    // grid-row: 2 / 5;
   }
 }
 
@@ -142,8 +132,6 @@
   background: $white_color_dream;
   width: 60vw;
   bottom: 1rem;
-  //column-gap: 0.8rem;
-  //   padding: 5px 1rem;
   border-radius: 10px;
   left: 50%;
   transform: translate(-50%);

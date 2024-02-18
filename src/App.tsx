@@ -1,22 +1,26 @@
 import "./App.scss";
-import Home from "./components/Home/Home";
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Flights from "./components/Flights/Flights";
-import Hotels from "./components/Hotels/Hotels";
-import Cars from "./components/Cars/Cars";
-import Activities from "./components/Activities/Activities";
+
+const Home = lazy(() => import("./components/Home/Home"));
+const Flights = lazy(() => import("./components/Flights/Flights"));
+const Hotel = lazy(() => import("./components/Hotels/Hotels"));
+const Car = lazy(() => import("./components/Cars/Cars"));
+const Activities = lazy(() => import("./components/Activities/Activities"));
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />}>
-          <Route index element={<Flights />} />
-          <Route path="hotels" element={<Hotels />} />
-          <Route path="cars" element={<Cars />} />
-          <Route path="activities" element={<Activities />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={"Loading..."}>
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route index element={<Flights />} />
+            <Route path="hotels" element={<Hotel />} />
+            <Route path="cars" element={<Car />} />
+            <Route path="activities" element={<Activities />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

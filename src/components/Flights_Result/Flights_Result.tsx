@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./flights_result.scss";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useRootContext } from "../../context/context";
@@ -16,7 +16,7 @@ function Flights_Result() {
   const [isSort, setIsSort] = useState(false);
   const [isFilter, setIsFilter] = useState(false);
   const [sortBy, setSortBy] = useState("");
-  const [filterBy, setFilterBy] = useState("");
+  // const [filterBy, setFilterBy] = useState("");
 
   useEffect(() => {
     const localData = localStorage.getItem("flight_data");

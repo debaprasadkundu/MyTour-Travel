@@ -197,3 +197,11 @@ input:not(:placeholder-shown) + label {
 .warning {
   color: $red_color;
 }
+
+.hidden {
+  display: none;
+}
+
+.showen {
+  display: block;
+}

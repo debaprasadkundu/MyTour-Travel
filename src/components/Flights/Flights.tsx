@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./flights.scss";
 import { useRootContext } from "../../context/context";
 import { SearchCriteria } from "../../models/flight";
@@ -11,9 +11,7 @@ function Flights() {
   const [isWarning, setIsWarning] = useState(false);
 
   useEffect(() => {
-    console.log("data in flight", data);
     setSearchCriteria(data);
-    console.log(formatDate(new Date()));
   }, []);
 
   const search = () => {
@@ -32,7 +30,6 @@ function Flights() {
   const validationPass = (d1: Date, d2: Date) => {
     if (compareDates(d1, d2) !== "greater") return true;
     else return false;
-    // return true;
   };
 
   const handleChange = ({ target }: any) => {
@@ -41,10 +38,6 @@ function Flights() {
       [target.id]: target.value,
     });
   };
-
-  useEffect(() => {
-    console.log(searchCriteria);
-  }, [searchCriteria]);
 
   return (
     <div className="flight">

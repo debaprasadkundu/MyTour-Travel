@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import "./home.scss";
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
@@ -18,8 +17,6 @@ function Home() {
           <div className="outlet-body">
             <Outlet />
           </div>
-          {/* <Home />
-      <Footer /> */}
         </div>
       )}
     </>
