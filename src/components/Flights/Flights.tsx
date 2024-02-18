@@ -8,6 +8,7 @@ import Autocomplete from "../../shared/AutoComplete/AutoComplete";
 function Flights() {
   const { data, setData, setIsFlightResult } = useRootContext();
   const [searchCriteria, setSearchCriteria] = useState({} as SearchCriteria);
+  const [isWarning, setIsWarning] = useState(false);
 
   useEffect(() => {
     console.log("data in flight", data);
@@ -16,9 +17,15 @@ function Flights() {
   }, []);
 
   const search = () => {
-    if (validationPass(new Date(), searchCriteria.depDate)) {
+    if (
+      validationPass(new Date(), searchCriteria.depDate) &&
+      validationPass(searchCriteria.depDate, searchCriteria.returnDate)
+    ) {
       setData(searchCriteria);
       setIsFlightResult(true);
+      setIsWarning(false);
+    } else {
+      setIsWarning(true);
     }
   };
 
@@ -44,27 +51,27 @@ function Flights() {
       <div className="flight-container grid-container">
         <div className=" item1 departure-input">
           <div className="p-relative">
-            <input
-              type="text"
-              placeholder="Enter Departure"
+            <Autocomplete
+              placeholder="Enter City"
               id="from"
-              value={searchCriteria.from}
-              onChange={handleChange}
+              selectedValue={searchCriteria.from}
+              onValueSelect={handleChange}
+              label="Departure"
+              selectedCity={searchCriteria.to}
             />
-            <label htmlFor="departure">Departure</label>
           </div>
         </div>
 
         <div className="item1 destination-input">
           <div className="p-relative">
-            <input
-              type="text"
-              placeholder="Enter Destination"
+            <Autocomplete
+              placeholder="Enter City"
               id="to"
-              value={searchCriteria.to}
-              onChange={handleChange}
+              selectedValue={searchCriteria.to}
+              onValueSelect={handleChange}
+              label="Destination"
+              selectedCity={searchCriteria.from}
             />
-            <label htmlFor="destination">Destination</label>
           </div>
         </div>
 
@@ -125,9 +132,7 @@ function Flights() {
           </label>
         </div>
 
-        <div>
-          <Autocomplete />
-        </div>
+        {isWarning && <p className="warning">Something went wrong</p>}
 
         <div className="item1 search-button-div">
           <button

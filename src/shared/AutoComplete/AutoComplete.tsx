@@ -1,14 +1,5 @@
-import React from "react";
-
-const suggestions = [
-  "Oathbringer",
-  "American Gods",
-  "A Game of Thrones",
-  "Prince of Thorns",
-  "Assassin's Apprentice",
-  "The Hero of Ages",
-  "The Gunslinger",
-];
+import React, { useEffect } from "react";
+import result from "../../mock/city.json";
 
 const SuggestionsList = (props: any) => {
   const {
@@ -32,7 +23,7 @@ const SuggestionsList = (props: any) => {
                 className={classname}
                 onClick={() => onSelectSuggestion(index)}
               >
-                {suggestion}
+                {suggestion.city_name}
               </li>
             );
           })}
@@ -45,19 +36,34 @@ const SuggestionsList = (props: any) => {
   return <></>;
 };
 
-const Autocomplete = () => {
+const Autocomplete = (props: any) => {
+  const { placeholder, id, selectedValue, onValueSelect, label, selectedCity } =
+    props;
   const [inputValue, setInputValue] = React.useState("");
   const [filteredSuggestions, setFilteredSuggestions] = React.useState<any>([]);
   const [selectedSuggestion, setSelectedSuggestion] = React.useState(0);
   const [displaySuggestions, setDisplaySuggestions] = React.useState(false);
+  const suggestions = result.City;
+
+  useEffect(() => {
+    setInputValue(selectedValue);
+  }, [selectedValue]);
 
   const onChange = (event: any) => {
     const value = event.target.value;
     setInputValue(value);
 
-    const filteredSuggestions = suggestions.filter((suggestion) =>
-      suggestion.toLowerCase().includes(value.toLowerCase())
-    );
+    if (!value?.length && selectedValue?.length) {
+      onValueSelect({ target: { id: id, value: "" } });
+    }
+
+    const filteredSuggestions = suggestions
+      .filter((item) => item.city_code != selectedCity)
+      ?.filter(
+        (suggestion) =>
+          suggestion.city_name.toLowerCase().includes(value.toLowerCase()) ||
+          suggestion.city_code.toLowerCase().includes(value.toLowerCase())
+      );
 
     setFilteredSuggestions(filteredSuggestions);
     setDisplaySuggestions(true);
@@ -65,19 +71,23 @@ const Autocomplete = () => {
 
   const onSelectSuggestion = (index: number) => {
     setSelectedSuggestion(index);
-    setInputValue(filteredSuggestions[index]);
+    const filteredValue = filteredSuggestions[index];
+    setInputValue(filteredValue?.city_name);
     setFilteredSuggestions([]);
     setDisplaySuggestions(false);
+    onValueSelect({ target: { id: id, value: filteredValue?.city_code } });
   };
 
   return (
     <>
       <input
-        className="user-input"
         type="text"
+        placeholder={placeholder}
+        id={id}
         onChange={onChange}
         value={inputValue}
       />
+      <label htmlFor={label}>{label}</label>
       <SuggestionsList
         inputValue={inputValue}
         selectedSuggestion={selectedSuggestion}

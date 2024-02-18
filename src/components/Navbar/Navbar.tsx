@@ -6,13 +6,7 @@ import { RiHotelFill } from "react-icons/ri";
 import { IoCarSharp } from "react-icons/io5";
 import { CiFlag1 } from "react-icons/ci";
 import { Link, Outlet } from "react-router-dom";
-
-const tabs = [
-  { name: "Flight", to: "/", icon: "MdFlight" },
-  { name: "Hotels", to: "/hotels", icon: "RiHotelFill" },
-  { name: "Cars", to: "/cars", icon: "IoCarSharp" },
-  { name: "Activities", to: "/activities", icon: "CiFlag1" },
-];
+import { tabs } from "../../utilities/tabs";
 
 function Navbar() {
   const [active, setActive] = useState("menu-bar");
@@ -22,6 +16,25 @@ function Navbar() {
     active === "menu-bar"
       ? setActive("menu-bar active-menu-bar")
       : setActive("menu-bar");
+  };
+
+  const renderSwitch = (param: string) => {
+    switch (param) {
+      case "MdFlight":
+        return <MdFlight className="icon" />;
+
+      case "RiHotelFill":
+        return <RiHotelFill className="icon" />;
+
+      case "IoCarSharp":
+        return <IoCarSharp className="icon" />;
+
+      case "CiFlag1":
+        return <CiFlag1 className="icon" />;
+
+      default:
+        return;
+    }
   };
 
   return (
@@ -43,7 +56,7 @@ function Navbar() {
               return (
                 <li className="nav-item" key={item.name}>
                   <Link to={item.to} className="nav-link">
-                    <MdFlight className="icon" />
+                    {renderSwitch(item.icon)}
                     {item.name}
                   </Link>
                 </li>

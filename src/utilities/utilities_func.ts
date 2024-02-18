@@ -1,3 +1,5 @@
+import { months } from "../constants";
+
 export function formatDate(date: Date) {
   var d = new Date(date),
     month = "" + (d.getMonth() + 1),
@@ -21,4 +23,8 @@ export const compareDates = (d1: Date, d2: Date) => {
   } else {
     return "equal";
   }
+};
+
+export const getDateFormat = (date: Date) => {
+  return months[new Date(date).getMonth()] + " " + new Date(date).getDate();
 };

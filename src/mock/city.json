@@ -1,0 +1,32 @@
+{
+  "City": [
+    {
+      "city_name": "Mumbai",
+      "city_code": "BOM"
+    },
+    {
+      "city_name": "Pune",
+      "city_code": "PNQ"
+    },
+    {
+      "city_name": "Kolkata",
+      "city_code": "CCU"
+    },
+    {
+      "city_name": "Chennai",
+      "city_code": "MAA"
+    },
+    {
+      "city_name": "New Delhi",
+      "city_code": "DEL"
+    },
+    {
+      "city_name": "Bengaluru",
+      "city_code": "BLR"
+    },
+    {
+      "city_name": "Hyderabad",
+      "city_code": "HYD"
+    }
+  ]
+}

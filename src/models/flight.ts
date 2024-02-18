@@ -1,18 +1,21 @@
 export interface Flight {
+  id: number;
   airline: string;
   from: string;
   fromCode: string;
   to: string;
   toCode: string;
+  date: string;
   img: string;
   depertureTime: string;
   arrivalTime: string;
   duration: string;
   noOfStop: number;
   stops: string[];
-  basicPrice: string;
-  mainPrice: string;
-  economyPrice: string;
+  basicPrice: number;
+  mainPrice: number;
+  economyPrice: number;
+  currency: string;
 }
 
 export interface SearchCriteria {

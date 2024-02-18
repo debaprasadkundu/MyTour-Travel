@@ -1,0 +1,12 @@
+{
+  "sort": [
+    "Price (Lowest to Highest)",
+    "Price (Highest to Lowest)",
+    "Duration (Shortest to Longest)",
+    "Duration (Longest to Shortest)",
+    "Departure (Earlier to Latest)",
+    "Arrival (Earlier to Latest)",
+    "Airline (A to Z)",
+    "Airline (Z to A)"
+  ]
+}

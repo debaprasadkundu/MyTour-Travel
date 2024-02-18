@@ -1,0 +1,9 @@
+@import "../../variables.scss";
+
+.filter-container {
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: 100vh;
+}
