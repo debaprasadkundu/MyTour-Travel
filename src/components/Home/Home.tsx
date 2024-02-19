@@ -2,7 +2,7 @@ import "./home.scss";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { useRootContext } from "../../context/context";
-import FlightsResult from "../Flights_Result/FlightsResult";
+import FlightsResult from "../FlightsResult/FlightsResult";
 
 function Home() {
   const { isFlightResult } = useRootContext();

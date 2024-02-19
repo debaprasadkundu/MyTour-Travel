@@ -27,6 +27,12 @@ export const sort = (sortBy: string, arr: Flight[]): Flight[] => {
       return arr.sort((x, y) => y.airline.localeCompare(x.airline));
 
     default:
-      return [];
+      return arr;
   }
+};
+
+export const filter = (filterBy: string[], arr: Flight[]): Flight[] => {
+  if (filterBy && filterBy.length) {
+    return arr.filter((item: Flight) => filterBy.includes(item.airline));
+  } else return arr;
 };

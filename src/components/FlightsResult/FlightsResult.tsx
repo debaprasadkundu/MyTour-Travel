@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./flightsresult.scss";
 import { useRootContext } from "../../context/context";
 import result from "../../mock/flight_result.json";
@@ -7,8 +7,8 @@ import { getDateFormat } from "../../utilities/utilities_func";
 import Sorting from "../Sorting/Sorting";
 import Filters from "../Filters/Filters";
 import CommonHeader from "../../shared/CommonHeader/CommonHeader";
-import { sort } from "../../utilities/sort_utility";
 import { arrow } from "../../assets";
+import { reducer } from "../../reducers/FlightReducer";
 
 function FlightsResult() {
   const { data, isFlightResult, setIsFlightResult } = useRootContext();
@@ -16,15 +16,25 @@ function FlightsResult() {
   const [isSort, setIsSort] = useState(false);
   const [isFilter, setIsFilter] = useState(false);
   const [sortBy, setSortBy] = useState("");
-  // const [filterBy, setFilterBy] = useState("");
+  const [filterBy, setFilterBy] = useState<string[]>([]);
+
+  const [state, dispatch] = useReducer(reducer, { result: [] });
 
   useEffect(() => {
     const localData = localStorage.getItem("flight_data");
     if (!localData) {
       setRouteResult(result?.route);
+      dispatch({
+        type: "InitialState",
+        data: result?.route,
+      });
       localStorage.setItem("flight_data", JSON.stringify(result?.route));
     } else {
       setRouteResult(JSON.parse(localData));
+      dispatch({
+        type: "InitialState",
+        data: JSON.parse(localData),
+      });
     }
   }, []);
 
@@ -40,7 +50,21 @@ function FlightsResult() {
     back();
     if (type === "sortBy") {
       setSortBy(value.sortBy);
-      setRouteResult(sort(value.sortBy, routeResult));
+      dispatch({
+        type: "condition",
+        data: routeResult,
+        sortBy: value.sortBy,
+        filterBy: filterBy,
+      });
+    } else {
+      setFilterBy(value.filterBy);
+      value.filterBy?.length &&
+        dispatch({
+          type: "condition",
+          data: routeResult,
+          sortBy: sortBy,
+          filterBy: value.filterBy,
+        });
     }
   };
 
@@ -49,7 +73,11 @@ function FlightsResult() {
       {window.innerWidth > 992 && !isSort && !isFilter && (
         <>
           <Sorting sentValue={getValue} selectedSortBy={sortBy} />
-          <Filters sentValue={getValue} />
+          <Filters
+            sentValue={getValue}
+            result={routeResult}
+            selectedFiltered={filterBy}
+          />
         </>
       )}
 
@@ -83,7 +111,7 @@ function FlightsResult() {
       )}
       {isFlightResult && !isSort && !isFilter && (
         <>
-          {routeResult?.map((item: Flight) => {
+          {state?.result?.map((item: Flight) => {
             return (
               <div className="card" key={item.id}>
                 <div className="card-container">
@@ -139,7 +167,13 @@ function FlightsResult() {
         </>
       )}
       {isSort && <Sorting sentValue={getValue} selectedSortBy={sortBy} />}
-      {isFilter && <Filters sentValue={getValue} />}
+      {isFilter && (
+        <Filters
+          sentValue={getValue}
+          result={routeResult}
+          selectedFiltered={filterBy}
+        />
+      )}
     </div>
   );
 }

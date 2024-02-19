@@ -4,7 +4,7 @@
   padding: 30px 15px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
   height: 100vh;
 
   @media screen and (min-width: 992px) {
@@ -12,5 +12,26 @@
     gap: 10px;
     height: auto;
     padding: 15px;
+  }
+
+  label {
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    position: relative;
+    pointer-events: visible;
+    margin: 10px 15px;
+    padding: 0;
+
+    @media screen and (min-width: 992px) {
+      font-size: 14px;
+    }
+  }
+
+  input {
+    position: relative;
+    top: 5px;
+    width: 20px;
+    height: 20px;
   }
 }
