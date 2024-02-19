@@ -34,7 +34,7 @@ const Sorting = ({ selectedSortBy, sentValue }: Props) => {
             id={item}
             name="sorting"
             value={item}
-            checked={item === sortBy}
+            defaultChecked={item === sortBy}
             onClick={onSelect}
           />
           <label htmlFor={item}>{item}</label>
