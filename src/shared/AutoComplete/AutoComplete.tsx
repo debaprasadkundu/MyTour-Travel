@@ -40,7 +40,7 @@ const SuggestionsList = (props: any) => {
 const Autocomplete = (props: any) => {
   const { placeholder, id, selectedValue, onValueSelect, label, selectedCity } =
     props;
-  const [inputValue, setInputValue] = React.useState("");
+  const [inputValue, setInputValue] = React.useState(selectedValue);
   const [filteredSuggestions, setFilteredSuggestions] = React.useState<any>([]);
   const [selectedSuggestion, setSelectedSuggestion] = React.useState(0);
   const [displaySuggestions, setDisplaySuggestions] = React.useState(false);

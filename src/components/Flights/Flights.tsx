@@ -17,7 +17,8 @@ function Flights() {
   const search = () => {
     if (
       validationPass(new Date(), searchCriteria.depDate) &&
-      validationPass(searchCriteria.depDate, searchCriteria.returnDate)
+      validationPass(searchCriteria.depDate, searchCriteria.returnDate) &&
+      searchCriteria.from !== searchCriteria.to
     ) {
       setData(searchCriteria);
       setIsFlightResult(true);

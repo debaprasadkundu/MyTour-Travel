@@ -2,7 +2,7 @@ import "./home.scss";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { useRootContext } from "../../context/context";
-import Flights_Result from "../Flights_Result/Flights_Result";
+import FlightsResult from "../Flights_Result/FlightsResult";
 
 function Home() {
   const { isFlightResult } = useRootContext();
@@ -11,13 +11,13 @@ function Home() {
   return (
     <>
       {isFlightResult && window.innerWidth <= 992 ? (
-        <Flights_Result />
+        <FlightsResult />
       ) : isFlightResult ? (
         <div>
           <Navbar />
           <div className="outlet-body">
             <Outlet />
-            {pathname === "/" && <Flights_Result />}
+            {pathname === "/" && <FlightsResult />}
           </div>
         </div>
       ) : (

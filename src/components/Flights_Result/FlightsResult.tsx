@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./flights_result.scss";
+import "./flightsresult.scss";
 import { useRootContext } from "../../context/context";
 import result from "../../mock/flight_result.json";
 import { Flight } from "../../models/flight";
@@ -10,7 +10,7 @@ import CommonHeader from "../../shared/CommonHeader/CommonHeader";
 import { sort } from "../../utilities/sort_utility";
 import { arrow } from "../../assets";
 
-function Flights_Result() {
+function FlightsResult() {
   const { data, isFlightResult, setIsFlightResult } = useRootContext();
   const [routeResult, setRouteResult] = useState<Flight[]>([]);
   const [isSort, setIsSort] = useState(false);
@@ -144,4 +144,4 @@ function Flights_Result() {
   );
 }
 
-export default Flights_Result;
+export default FlightsResult;
