@@ -84,6 +84,7 @@ export default {
   // moduleNameMapper: {},
   moduleNameMapper: {
     "\\.(css|less|scss)$": "identity-obj-proxy",
+    "^.+\\.svg$": "jest-svg-transformer",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -175,7 +176,11 @@ export default {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
+  //transform: {
+  // "^.+\\.jsx?$": "babel-jest",
+  // "^.+\\.svg$": "jest-svg-transformer",
+  // "\\.svg$": "<rootDir>/fileTransformer.js",
+  //},
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [

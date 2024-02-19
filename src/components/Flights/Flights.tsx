@@ -47,10 +47,10 @@ function Flights() {
             <Autocomplete
               placeholder="Enter City"
               id="from"
-              selectedValue={searchCriteria.from}
+              selectedValue={searchCriteria?.from}
               onValueSelect={handleChange}
               label="Departure"
-              selectedCity={searchCriteria.to}
+              selectedCity={searchCriteria?.to}
             />
           </div>
         </div>
@@ -60,10 +60,10 @@ function Flights() {
             <Autocomplete
               placeholder="Enter City"
               id="to"
-              selectedValue={searchCriteria.to}
+              selectedValue={searchCriteria?.to}
               onValueSelect={handleChange}
               label="Destination"
-              selectedCity={searchCriteria.from}
+              selectedCity={searchCriteria?.from}
             />
           </div>
         </div>
@@ -74,7 +74,7 @@ function Flights() {
               type="date"
               id="depDate"
               min={formatDate(new Date())}
-              value={searchCriteria.depDate?.toString()}
+              value={searchCriteria?.depDate?.toString()}
               onChange={handleChange}
             />
             <label htmlFor="depDate">Depart Date</label>
@@ -86,10 +86,10 @@ function Flights() {
             <input
               type="date"
               id="returnDate"
-              min={formatDate(searchCriteria.depDate)}
-              value={searchCriteria.returnDate?.toString()}
+              min={formatDate(searchCriteria?.depDate)}
+              value={searchCriteria?.returnDate?.toString()}
               onChange={handleChange}
-              disabled={!searchCriteria.depDate}
+              disabled={!searchCriteria?.depDate}
             />
             <label htmlFor="returnDate">Return Date</label>
           </div>
@@ -100,7 +100,7 @@ function Flights() {
             <input
               type="number"
               id="noOfTraveller"
-              value={searchCriteria.noOfTraveller}
+              value={searchCriteria?.noOfTraveller}
               onChange={handleChange}
               min="1"
             />
@@ -114,7 +114,7 @@ function Flights() {
             required
             id="class"
             onChange={handleChange}
-            value={searchCriteria.class}
+            value={searchCriteria?.class}
           >
             <option value="basic">Basic</option>
             <option value="main">Main</option>
@@ -132,11 +132,11 @@ function Flights() {
             className="search-button"
             onClick={search}
             disabled={
-              !searchCriteria.from ||
-              !searchCriteria.to ||
-              !searchCriteria.depDate ||
-              searchCriteria.noOfTraveller <= 0 ||
-              !searchCriteria.class
+              !searchCriteria?.from ||
+              !searchCriteria?.to ||
+              !searchCriteria?.depDate ||
+              searchCriteria?.noOfTraveller <= 0 ||
+              !searchCriteria?.class
             }
           >
             Search Flight
