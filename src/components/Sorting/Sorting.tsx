@@ -13,7 +13,7 @@ const Sorting = ({ selectedSortBy, sentValue }: Props) => {
 
   useEffect(() => {
     setSortArr(sort_res.sort);
-    window.scrollTo(0, 0);
+    window.innerWidth <= 992 && window.scrollTo(0, 0);
     setSortBy(selectedSortBy);
   }, [selectedSortBy]);
 

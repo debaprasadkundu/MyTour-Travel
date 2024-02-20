@@ -1,5 +1,6 @@
 import React from "react";
 import { createContext, useContext, useState } from "react";
+import { SearchCriteria } from "../models/flight";
 
 const RootContext = createContext({} as any);
 
@@ -9,7 +10,7 @@ interface Props {
 
 export const RootContextProvider = ({ children }: Props) => {
   const [isFlightResult, setIsFlightResult] = useState(false);
-  const [data, setData] = useState({
+  const [data, setData] = useState<SearchCriteria>({
     from: "",
     to: "",
     noOfTraveller: 1,

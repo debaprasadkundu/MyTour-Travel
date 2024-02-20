@@ -16,7 +16,7 @@ function Flights() {
 
   const search = () => {
     if (
-      validationPass(new Date(), searchCriteria.depDate) &&
+      validationPass(new Date().toString(), searchCriteria.depDate) &&
       validationPass(searchCriteria.depDate, searchCriteria.returnDate) &&
       searchCriteria.from !== searchCriteria.to
     ) {
@@ -28,7 +28,7 @@ function Flights() {
     }
   };
 
-  const validationPass = (d1: Date, d2: Date) => {
+  const validationPass = (d1: string, d2: string) => {
     if (compareDates(d1, d2) !== "greater") return true;
     else return false;
   };
@@ -87,7 +87,7 @@ function Flights() {
             <input
               type="date"
               id="returnDate"
-              min={formatDate(searchCriteria?.depDate)}
+              min={formatDate(new Date(searchCriteria?.depDate))}
               value={searchCriteria?.returnDate?.toString()}
               onChange={handleChange}
               disabled={!searchCriteria?.depDate}

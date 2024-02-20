@@ -12,7 +12,7 @@ export function formatDate(date: Date) {
   return [year, month, day].join("-");
 }
 
-export const compareDates = (d1: Date, d2: Date) => {
+export const compareDates = (d1: string, d2: string) => {
   let date1 = new Date(d1).getTime();
   let date2 = new Date(d2).getTime();
 

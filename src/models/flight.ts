@@ -22,7 +22,7 @@ export interface SearchCriteria {
   from: string;
   to: string;
   noOfTraveller: number;
-  depDate: Date;
-  returnDate: Date;
+  depDate: string;
+  returnDate: string;
   class: string;
 }

@@ -14,7 +14,7 @@ const Filters = ({ sentValue, result, selectedFiltered }: Props) => {
   const [filterBy, setFilterBy] = useState<string[]>([]);
   const [airlineFilter, setAirlineFilter] = useState<string[]>([]);
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.innerWidth <= 992 && window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {

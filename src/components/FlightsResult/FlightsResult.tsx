@@ -23,31 +23,44 @@ function FlightsResult() {
   useEffect(() => {
     const localData = localStorage.getItem("flight_data");
     if (!localData) {
-      setRouteResult(result?.route);
-      dispatch({
-        type: "InitialState",
-        data: result?.route,
-      });
-      localStorage.setItem("flight_data", JSON.stringify(result?.route));
+      const response = result?.route;
+      checkCriteria(response);
+      localStorage.setItem("flight_data", JSON.stringify(response));
     } else {
-      setRouteResult(JSON.parse(localData));
-      dispatch({
-        type: "InitialState",
-        data: JSON.parse(localData),
-      });
+      const strToJsonData = JSON.parse(localData);
+      checkCriteria(strToJsonData);
     }
-  }, []);
+  }, [data]);
+
+  const checkCriteria = (res: Flight[]) => {
+    const filteredData = res.filter((item: Flight) => {
+      return (
+        item.fromCode === data.from &&
+        item.toCode === data.to &&
+        item.date === data.depDate
+      );
+    });
+    setRouteResult(filteredData);
+    dispatch({
+      type: "InitialState",
+      data: filteredData,
+    });
+    filteredData?.forEach((item: Flight) => {
+      filterBy.push(item.airline);
+    });
+  };
 
   const back = () => {
-    if (isFlightResult && !isSort && !isFilter) {
-      setIsFlightResult(false);
+    if (window.innerWidth <= 992) {
+      if (isFlightResult && !isSort && !isFilter) {
+        setIsFlightResult(false);
+      }
+      isSort && setIsSort(false);
+      isFilter && setIsFilter(false);
     }
-    isSort && setIsSort(false);
-    isFilter && setIsFilter(false);
   };
 
   const getValue = (type: string, value: any) => {
-    back();
     if (type === "sortBy") {
       setSortBy(value.sortBy);
       dispatch({
@@ -72,9 +85,18 @@ function FlightsResult() {
     <div className="flight_result">
       {window.innerWidth > 992 && !isSort && !isFilter && (
         <>
-          <Sorting sentValue={getValue} selectedSortBy={sortBy} />
+          <Sorting
+            sentValue={(type, value) => {
+              getValue(type, value);
+              back();
+            }}
+            selectedSortBy={sortBy}
+          />
           <Filters
-            sentValue={getValue}
+            sentValue={(type, value) => {
+              getValue(type, value);
+              back();
+            }}
             result={routeResult}
             selectedFiltered={filterBy}
           />
@@ -109,7 +131,8 @@ function FlightsResult() {
           </div>
         </CommonHeader>
       )}
-      {isFlightResult && !isSort && !isFilter && (
+      {((isFlightResult && !isSort && !isFilter && window.innerWidth <= 992) ||
+        (isFlightResult && window.innerWidth > 992)) && (
         <>
           {state?.result?.map((item: Flight) => {
             return (
@@ -166,10 +189,21 @@ function FlightsResult() {
           )}
         </>
       )}
-      {isSort && <Sorting sentValue={getValue} selectedSortBy={sortBy} />}
+      {isSort && (
+        <Sorting
+          sentValue={(type, value) => {
+            getValue(type, value);
+            back();
+          }}
+          selectedSortBy={sortBy}
+        />
+      )}
       {isFilter && (
         <Filters
-          sentValue={getValue}
+          sentValue={(type, value) => {
+            getValue(type, value);
+            back();
+          }}
           result={routeResult}
           selectedFiltered={filterBy}
         />
